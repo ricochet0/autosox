@@ -38,7 +38,7 @@ traverse() {
 }
 
 if [ $# != 1 ]; then
-    echo "Usage: ./soxcrawler PATH"
+    echo "Need one arg :)"
 else
     mkdir -p $out_dir
     traverse $(echo "$1" | sed 's:/*$::') # strip trailing backslashes
