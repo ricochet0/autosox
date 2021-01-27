@@ -13,6 +13,4 @@ Where DIR contains your audio files
 #### Tip
 Add the following line to ~/.bashrc:  
 ```alias autosox='bash absolute/path/to/autosox.sh'```  
-That way you can run  
-```autosox DIR```  
-from anywhere
+That way you can run `autosox DIR` from anywhere
