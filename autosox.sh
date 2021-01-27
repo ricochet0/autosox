@@ -25,7 +25,7 @@ traverse() {
         # exclude irrelevant patterns and files already sox-ed
         if [[ $path/$entry == $filetype_patterns ]] && [[ ! -f $out_dir/$path/$entry.jpg ]]; then
             # sox it and compress the image
-            sox $path/$entry -n spectrogram -o "$out_dir/$path/$entry.png"
+            sox $path/$entry -n spectrogram -o $out_dir/$path/$entry.png
             ((scan_count++))
             mogrify -strip -quality 80% -sampling-factor 4:4:4 -format jpg $out_dir/$path/$entry.png
             rm -f $out_dir/$path/$entry.png
