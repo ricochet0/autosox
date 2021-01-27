@@ -21,7 +21,6 @@ traverse() {
     mkdir -p $out_dir/$path
 
     for entry in $(ls $path); do
-
         # exclude irrelevant patterns and files already sox-ed
         if [[ $path/$entry == $filetype_patterns ]] && [[ ! -f $out_dir/$path/$entry.jpg ]]; then
             # sox it and compress the image
@@ -29,12 +28,15 @@ traverse() {
             ((scan_count++))
             mogrify -strip -quality 80% -sampling-factor 4:4:4 -format jpg $out_dir/$path/$entry.png
             rm -f $out_dir/$path/$entry.png
-        fi
-
-        if [ -d $path/$entry ]; then
+        elif [ -d $path/$entry ]; then
             traverse $path/$entry "====$arrow" # recursive call on subdir
         fi
     done
+
+    # remove empty directories created
+    if [ -z "$(ls -A $out_dir/$path)" ]; then
+        rmdir $out_dir/$path
+    fi
 
 }
 
