@@ -10,3 +10,9 @@ Where DIR contains your audio files
 - [sox](http://sox.sourceforge.net/)  
 - [imagemagick](https://imagemagick.org/index.php)  
 
+#### Tip
+Add the following line to ~/.bashrc:  
+```alias autosox='bash absolute/path/to/autosox.sh'```  
+That way you can run  
+    autosox DIR  
+from anywhere
